@@ -7,7 +7,7 @@ Write-Host "started"
     Start-Process "powershell.exe" -ArgumentList @(
         ".", 
         "'$($using:psRoot)\..\modules\run-with-tee.ps1'", 
-        "'$($using:psRoot)\..\the-script.ps1'", 
+        "'$($using:psRoot)\..\the script.ps1'", 
         "'$($using:psRoot)\..\output\log 06-start-process-parallel-$_.txt'", 
         $_) -Wait
 }
