@@ -3,7 +3,7 @@ $psRoot = $PSScriptRoot
 
 Write-Host "started"
 
-1..5 | Invoke-Parallel -Throttle 3 -ScriptBlock {
+1..5 | Invoke-Parallel -Quiet -Throttle 3 -ScriptBlock {
     . "$($using:psRoot)\..\the-script.ps1" $_
 }
 

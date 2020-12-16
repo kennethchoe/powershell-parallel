@@ -1,13 +1,21 @@
 ﻿. "$PSScriptRoot\..\Invoke-Parallel\Invoke-Parallel.ps1"
-$psRoot = $PSScriptRoot
 
 $sum = @{Total = 0}
 
-1..5 | Invoke-Parallel -Quiet -Throttle 3 -ScriptBlock {
+1..5 | Invoke-Parallel -Quiet -Throttle 3 -ScriptBlock { 
+    function Enter-Singleton($key) {
+        $mtx = New-Object System.Threading.Mutex($false, $key)
+        return $mtx
+    }
 
-    Import-Module "$($using:psRoot)\..\modules\mutex.psm1" -Force
+    function Exit-Singleton($mtx) {
+        [void]$mtx.ReleaseMutex()
+        $mtx.Dispose()
+    }
 
+    # exclusiveness is controlled by the key. try these 2 options.
     $mtx = Enter-Singleton "singleton-test"
+    #$mtx = Enter-Singleton "singleton-test $_"
 
     Write-Host "($(($using:sum).Total)) $_ --"
     $copy = ($using:sum).Total

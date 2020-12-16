@@ -2,7 +2,7 @@ param (
 [string] $scriptPath,
 [string] $paramFilePath)
 
-Import-Module "$PSScriptRoot\process-communication-utils.psm1" -DisableNameChecking
+Import-Module "$PSScriptRoot\process-communication-utils.psm1" -DisableNameChecking -Force
 
 $params = DeserializeFrom-File $paramFilePath
 

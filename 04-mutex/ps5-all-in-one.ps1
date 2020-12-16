@@ -1,33 +1,18 @@
 ﻿. "$PSScriptRoot\..\Invoke-Parallel\Invoke-Parallel.ps1"
 
 $sum = @{Total = 0}
+$mtx = New-Object System.Threading.Mutex($false, "my-mutex")
 
-1..5 | Invoke-Parallel -Throttle 3 -ScriptBlock { 
-    function Enter-Singleton($key) {
-        $mtx = New-Object System.Threading.Mutex($false, $key)
-	    if (-not $mtx.WaitOne(10000)) {
-		    throw "Timeout acquiring Mutex!"
-            exit 1
-        }
-        return $mtx
-    }
-
-    function Exit-Singleton($mtx) {
-        [void]$mtx.ReleaseMutex()
-        $mtx.Dispose()
-    }
-
-    # exclusiveness is controlled by the key. try these 2 options.
-    $mtx = Enter-Singleton "singleton-test"
-    #$mtx = Enter-Singleton "singleton-test $_"
-
+1..5 | Invoke-Parallel -Quiet -Throttle 3 -ScriptBlock { 
+    $null = ($using:mtx).WaitOne()
     Write-Host "($(($using:sum).Total)) $_ --"
     $copy = ($using:sum).Total
     Start-Sleep -Milliseconds (Get-Random -Minimum 10 -Maximum 3000)
     ($using:sum).Total = $copy + $_
     Write-Host "($(($using:sum).Total))   --> $_"
-
-    Exit-Singleton $mtx
+    $null = [void]($using:mtx).ReleaseMutex()
 }
+
+$mtx.Dispose()
 
 Write-Host "total: $($sum.Total)"

@@ -1,11 +1,10 @@
-﻿. "$PSScriptRoot\..\Invoke-Parallel\Invoke-Parallel.ps1"
-$psRoot = $PSScriptRoot
+﻿$psRoot = $PSScriptRoot
 
 $sum = @{Total = 0}
 
 1..5 | Foreach-Object -Parallel {
 
-    Import-Module "$($using:psRoot)\..\modules\mutex.psm1"
+    Import-Module "$($using:psRoot)\..\modules\mutex.psm1" -Force
 
     $mtx = Enter-Singleton "singleton-test"
 

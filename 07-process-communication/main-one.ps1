@@ -1,4 +1,4 @@
-Import-Module "$PSScriptRoot\..\modules\process-communication.psm1" -DisableNameChecking
+Import-Module "$PSScriptRoot\..\modules\process-communication.psm1" -DisableNameChecking -Force
 
 $obj = @{
     "propA" = "A";

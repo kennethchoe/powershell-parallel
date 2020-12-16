@@ -3,7 +3,7 @@
 $sum = @{Total = 0}
 $notAccessibleVar = "hello outside"
 
-1..5 | Invoke-Parallel -Throttle 3 -ScriptBlock { 
+1..5 | Invoke-Parallel -Quiet -Throttle 3 -ScriptBlock { 
     Write-Host "adding $_"
     ($using:sum).Total = ($using:sum).Total + $_
     Write-Host $notAccessibleVar

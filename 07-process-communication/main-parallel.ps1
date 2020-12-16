@@ -1,8 +1,8 @@
 . "$PSScriptRoot\..\Invoke-Parallel\Invoke-Parallel.ps1"
 
 $psRoot = $PSScriptRoot
-1..2 | Invoke-Parallel -ScriptBlock { 
-    Import-Module "$($using:psRoot)\..\modules\process-communication.psm1" -DisableNameChecking
+1..2 | Invoke-Parallel -Quiet -ScriptBlock { 
+    Import-Module "$($using:psRoot)\..\modules\process-communication.psm1" -DisableNameChecking -Force
 
     $obj = @{
         "propA" = "A";

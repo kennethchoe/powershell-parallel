@@ -1,9 +1,9 @@
 ﻿. "$PSScriptRoot\..\Invoke-Parallel\Invoke-Parallel.ps1"
-Import-Module "$PSScriptRoot\..\modules\mutex.psm1"
+Import-Module "$PSScriptRoot\..\modules\mutex.psm1" -Force
 
 $sum = @{Total = 0}
 
-1..5 | Invoke-Parallel -Throttle 3 -ImportModules -ScriptBlock { 
+1..5 | Invoke-Parallel -Quiet -Throttle 3 -ImportModules -ScriptBlock { 
     $mtx = Enter-Singleton "singleton-test"
 
     Write-Host "($(($using:sum).Total)) $_ --"

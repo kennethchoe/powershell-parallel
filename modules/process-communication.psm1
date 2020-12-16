@@ -1,4 +1,4 @@
-Import-Module "$PSScriptRoot\process-communication-utils.psm1" -DisableNameChecking
+Import-Module "$PSScriptRoot\process-communication-utils.psm1" -DisableNameChecking -Force
 
 function RunOn-Console($psFile, $logFile, $params) {
     $paramFilePath = (New-TemporaryFile).FullName;
