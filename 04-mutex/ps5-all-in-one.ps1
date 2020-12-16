@@ -17,24 +17,17 @@ $sum = @{Total = 0}
         $mtx.Dispose()
     }
 
-    function Assign($obj, $num) {
-        $obj.Total = $num
-    }
-
-    Write-Host "$_ : started"
-
     # exclusiveness is controlled by the key. try these 2 options.
     $mtx = Enter-Singleton "singleton-test"
     #$mtx = Enter-Singleton "singleton-test $_"
 
+    Write-Host "($(($using:sum).Total)) $_ --"
     $copy = ($using:sum).Total
-    Write-Host "$_ : $copy"
-    $copy += $_
     Start-Sleep -Milliseconds (Get-Random -Minimum 10 -Maximum 3000)
-    Write-Host "$_ : $copy"
-    Assign $using:sum $copy
+    ($using:sum).Total = $copy + $_
+    Write-Host "($(($using:sum).Total))   --> $_"
+
     Exit-Singleton $mtx
-    Write-Host "$_ : finished"
 }
 
 Write-Host "total: $($sum.Total)"

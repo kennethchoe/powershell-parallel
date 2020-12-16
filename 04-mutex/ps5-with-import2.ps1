@@ -1,25 +1,18 @@
 ﻿. "$PSScriptRoot\..\Invoke-Parallel\Invoke-Parallel.ps1"
-$psRoot = $PSScriptRoot
+Import-Module "$PSScriptRoot\..\modules\mutex.psm1"
 
 $sum = @{Total = 0}
 
-1..5 | Invoke-Parallel -Throttle 3 -ScriptBlock { 
-    Import-Module "$($using:psRoot)\..\modules\mutex.psm1"
-
-    function Assign($obj, $num) {
-        $obj.Total = $num
-    }
-
-    Write-Host "$_ : started"
+1..5 | Invoke-Parallel -Throttle 3 -ImportModules -ScriptBlock { 
     $mtx = Enter-Singleton "singleton-test"
+
+    Write-Host "($(($using:sum).Total)) $_ --"
     $copy = ($using:sum).Total
-    Write-Host "$_ : $copy"
-    $copy += $_
     Start-Sleep -Milliseconds (Get-Random -Minimum 10 -Maximum 3000)
-    Write-Host "$_ : $copy"
-    Assign $using:sum $copy
+    ($using:sum).Total = $copy + $_
+    Write-Host "($(($using:sum).Total))   --> $_"
+
     Exit-Singleton $mtx
-    Write-Host "$_ : finished"
 }
 
 Write-Host "total: $($sum.Total)"
