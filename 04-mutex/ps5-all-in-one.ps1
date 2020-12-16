@@ -4,6 +4,7 @@ $sum = @{Total = 0}
 $mtx = New-Object System.Threading.Mutex($false, "my-mutex")
 
 1..5 | Invoke-Parallel -Quiet -Throttle 3 -ScriptBlock { 
+    Write-Host "starting $_"
     $null = ($using:mtx).WaitOne()
     Write-Host "($(($using:sum).Total)) $_ --"
     $copy = ($using:sum).Total

@@ -5,6 +5,7 @@ $sum = @{Total = 0}
 1..5 | Invoke-Parallel -Quiet -Throttle 3 -ScriptBlock { 
     function Enter-Singleton($key) {
         $mtx = New-Object System.Threading.Mutex($false, $key)
+	    $null = $mtx.WaitOne(10000)
         return $mtx
     }
 
