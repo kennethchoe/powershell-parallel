@@ -55,7 +55,7 @@ https://github.com/RamblingCookieMonster/Invoke-Parallel
 
 https://stackoverflow.com/questions/60248354/powershell-jobs-vs-start-process
 
-https://gallery.technet.microsoft.com/Powershell-ISE-Explorer-bfc92307
+https://gallery.technet.microsoft.com/Powershell-ISE-Explorer-bfc92307 => very useful add-on if you want to use Windows Powershell ISE
 
 [Advanced PowerShell Debugging Techniques (video)](https://www.youtube.com/watch?v=O-dksknPQBw)
 
