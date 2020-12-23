@@ -49,6 +49,18 @@ This is a result of my team's work at [Abrigo](https://www.abrigo.com/) to impro
 
 * [Invoke-Parallel](https://github.com/RamblingCookieMonster/Invoke-Parallel) module uses Runspaces
 
+## References
+
+https://github.com/RamblingCookieMonster/Invoke-Parallel
+
+https://stackoverflow.com/questions/60248354/powershell-jobs-vs-start-process
+
+https://gallery.technet.microsoft.com/Powershell-ISE-Explorer-bfc92307
+
+[Advanced PowerShell Debugging Techniques (video)](https://www.youtube.com/watch?v=O-dksknPQBw)
+
+[Powershell Debugger Commands Reference](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_debuggers?view=powershell-5.1#debugger-commands)
+
 ## Disclaimer
 
 * I don't claim to be a powershell expert. I don't believe I understand its abstration properly, since there are moments that its behavior doesn't make any sense to me. Still, it is just available on every Windows system, thus a great tool to solve my company's problem - we have many on-prem installations on Windows. If you find any incorrect information or useful addition, please let me know or make PR.
