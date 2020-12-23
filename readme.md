@@ -10,7 +10,8 @@ This is a result of my team's work at [Abrigo](https://www.abrigo.com/) to impro
 |----------------------------|--------------------------------------------------------------|--------------------------------------------------|
 | Based On                   | .NET Framework                                               | .NET Core 3.x                                    |
 | Installation               | As part of Microsoft Management Framework or Windows Updates | [Separately installable package](https://github.com/PowerShell/PowerShell/releases/)                   |
-| Installed At               | C:\Windows\System32\WindowsPowerShell\v1.0\Powershell.exe    | C:\Program Files\Powershell\7\pwsh.exe           |
+| Installed At               | %windir%\System32\WindowsPowerShell\v1.0    | C:\Program Files\Powershell\7  |
+| Executable               | Powershell.exe    | pwsh.exe  |
 | Pros                       | Feature complete                                             | Cross-platform <br/> Runs side-by-side with other versions |
 | Cons                       | Windows only <br/> (5.1 has “core” edition also)   | Not implements all of Powershell 5 capabilities <br/> Not behaves exactly the same way as Powershell 5 |
 | Parallel Execution Support | [Powershell Jobs](https://devblogs.microsoft.com/scripting/parallel-processing-with-jobs-in-powershell/) <br/> [Invoke-Parallel module](https://github.com/RamblingCookieMonster/Invoke-Parallel)  | [ForEach-Object -Parallel](https://devblogs.microsoft.com/powershell/powershell-foreach-object-parallel-feature/) |
