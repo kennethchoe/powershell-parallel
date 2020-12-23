@@ -51,4 +51,4 @@ This is a result of my team's work at [Abrigo](https://www.abrigo.com/) to impro
 
 ## Disclaimer
 
-* I don't claim I am a powershell expert. I don't believe I understand its abstration properly, since there are moments that its behavior doesn't make any sense to me. Still, it is just available on every Windows system, thus a great tool to solve my company's problem - we have many on-prem installations on Windows.
+* I don't claim to be a powershell expert. I don't believe I understand its abstration properly, since there are moments that its behavior doesn't make any sense to me. Still, it is just available on every Windows system, thus a great tool to solve my company's problem - we have many on-prem installations on Windows. If you find any incorrect information or useful addition, please let me know or make PR.
