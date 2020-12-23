@@ -1,0 +1,1 @@
+main-one.ps1 and main-parallel.ps1 call child.ps1, which will run as child process.

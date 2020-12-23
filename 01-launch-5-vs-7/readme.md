@@ -1,0 +1,1 @@
+ps5-run.bat and ps7-run.bat runs the same script in different powershell versions.

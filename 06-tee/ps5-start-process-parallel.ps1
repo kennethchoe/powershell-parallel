@@ -1,3 +1,6 @@
+# run ps5-start-process-one.ps1 in multi-processing
+# $PSScriptRoot needs to be given with $using caluse
+
 . "$PSScriptRoot\..\Invoke-Parallel\Invoke-Parallel.ps1"
 $psRoot = $PSScriptRoot
 
